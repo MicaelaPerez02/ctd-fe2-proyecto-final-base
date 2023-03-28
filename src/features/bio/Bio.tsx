@@ -2,7 +2,6 @@ import { useState } from "react";
 import { NombresSimpsons, INFO_SIMPSONS } from "./constants";
 import * as Styled from "./Bio.styled";
 
-
 const Bio = () => {
   const [bioActiva, setBioActiva] = useState(
     INFO_SIMPSONS[NombresSimpsons.BART]
