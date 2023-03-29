@@ -1,69 +1,46 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { SuscribeImage, CloseButton as Close } from "../../assets";
-import { obtenerNoticias } from "./fakeRest";
 import * as Styled from "./styled";
+import Noticia, { INoticiasNormalizadas } from "./Noticia";
+import INoticiasProvider from "./NoticiasProvider";
 
-export interface INoticiasNormalizadas {
-  id: number;
-  titulo: string;
-  descripcion: string;
-  fecha: number | string;
-  esPremium: boolean;
-  imagen: string;
-  descripcionCorta?: string;
-}
-
-const Noticias = () => {
+const Noticias = ({ noticiasProvider }: { noticiasProvider: INoticiasProvider }) => {
   const [noticias, setNoticias] = useState<INoticiasNormalizadas[]>([]);
   const [modal, setModal] = useState<INoticiasNormalizadas | null>(null);
 
+  const obtenerInformacionNoticias = useCallback(async () => {
+    const noticiasApi = await noticiasProvider.obtenerNoticias();
+    const noticiasNormalizadas = noticiasApi.map((noticia) => Noticia(noticia));
+    setNoticias(noticiasNormalizadas);
+  }, [noticiasProvider]);
+
   useEffect(() => {
-    const obtenerInformacion = async () => {
-      const respuesta = await obtenerNoticias();
-
-      const data = respuesta.map((n) => {
-        const titulo = n.titulo
-          .split(" ")
-          .map((str) => {
-            return str.charAt(0).toUpperCase() + str.slice(1);
-          })
-          .join(" ");
-
-        const ahora = new Date();
-        const minutosTranscurridos = Math.floor(
-          (ahora.getTime() - n.fecha.getTime()) / 60000
-        );
-
-        return {
-          id: n.id,
-          titulo,
-          descripcion: n.descripcion,
-          fecha: `Hace ${minutosTranscurridos} minutos`,
-          esPremium: n.esPremium,
-          imagen: n.imagen,
-          descripcionCorta: n.descripcion.substring(0, 100),
-        };
-      });
-
-      setNoticias(data);
+    const actualizarNoticias = async () => {
+      await obtenerInformacionNoticias();
     };
+    actualizarNoticias();
+  }, [obtenerInformacionNoticias]);
 
-    obtenerInformacion();
-  }, []);
+  const handleSubscribe = () => {
+    setTimeout(() => {
+      alert("Suscripto!");
+      setModal(null);
+    }, 1000);
+  };
 
   return (
     <Styled.ContenedorNoticias>
       <Styled.TituloNoticias>Noticias de los Simpsons</Styled.TituloNoticias>
       <Styled.ListaNoticias>
-        {noticias.map((n) => (
+        {noticias.map((noticia) => (
           <Styled.TarjetaNoticia>
-            <Styled.ImagenTarjetaNoticia src={n.imagen} />
-            <Styled.TituloTarjetaNoticia>{n.titulo}</Styled.TituloTarjetaNoticia>
-            <Styled.FechaTarjetaNoticia>{n.fecha}</Styled.FechaTarjetaNoticia>
+            <Styled.ImagenTarjetaNoticia src={noticia.imagen} />
+            <Styled.TituloTarjetaNoticia>{noticia.titulo}</Styled.TituloTarjetaNoticia>
+            <Styled.FechaTarjetaNoticia>{noticia.fecha.toLocaleString()}</Styled.FechaTarjetaNoticia>
             <Styled.DescripcionTarjetaNoticia>
-              {n.descripcionCorta}
+              {noticia.descripcionCorta}
             </Styled.DescripcionTarjetaNoticia>
-            <Styled.BotonLectura onClick={() => setModal(n)}>Ver más</Styled.BotonLectura>
+            <Styled.BotonLectura onClick={() => setModal(noticia)}>Ver más</Styled.BotonLectura>
           </Styled.TarjetaNoticia>
         ))}
         {modal ? (
@@ -81,12 +58,7 @@ const Noticias = () => {
                     nuestros personajes favoritos.
                   </Styled.DescripcionModal>
                   <Styled.BotonSuscribir
-                    onClick={() =>
-                      setTimeout(() => {
-                        alert("Suscripto!");
-                        setModal(null);
-                      }, 1000)
-                    }
+                    onClick={handleSubscribe}
                   >
                     Suscríbete
                   </Styled.BotonSuscribir>
