@@ -1,6 +1,14 @@
 import { API_URL } from "../../app/constants";
 import { ICita } from "./types";
 
+/**
+Obtiene una cita de la API de forma aleatoria o por personaje.
+@async
+@function
+@param {string} [personaje] - Nombre del personaje de la cita (opcional).
+@throws {Error} Si el nombre del personaje es un número.
+@returns {Promise<ICita>} - Objeto que representa la cita obtenida de la API.
+*/
 export const obtenerCita: (personaje?: string) => Promise<ICita> = async (
   personaje
 ) => {

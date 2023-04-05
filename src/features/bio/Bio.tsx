@@ -2,13 +2,29 @@ import { useState } from "react";
 import { NombresSimpsons, INFO_SIMPSONS } from "./constants";
 import * as Styled from "./Bio.styled";
 
+
+/**
+Componente Bio que muestra información de personajes de Los Simpson.
+@returns {JSX.Element} Elemento JSX que muestra la información del personaje seleccionado.
+*/
 const Bio = () => {
   const [bioActiva, setBioActiva] = useState(
     INFO_SIMPSONS[NombresSimpsons.BART]
   );
 
+
+  /**
+  Manejador de evento que cambia el estado de la biografía activa.
+  @param {NombresSimpsons} nombre - El nombre del personaje cuya biografía se va a mostrar.
+  @returns {void}
+  */
   const onClick: (nombre: NombresSimpsons) => void = (nombre) =>
     setBioActiva(INFO_SIMPSONS[nombre]);
+
+  /**
+  Crea los botones de los personajes a partir de la constante INFO_SIMPSONS.
+  @returns {JSX.Element[]} Arreglo de elementos JSX que contienen los botones de los personajes.
+  */
 
   const crearBotones = () => {
     return Object.keys(INFO_SIMPSONS).map((nombre: string) => (

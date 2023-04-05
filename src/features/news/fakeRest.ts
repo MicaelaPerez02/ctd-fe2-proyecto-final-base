@@ -1,3 +1,13 @@
+/**
+Interfaz que define la estructura de una noticia
+@interface INoticias
+@property {number} id - ID de la noticia.
+@property {string} titulo - Título de la noticia.
+@property {string} descripcion - Descripción de la noticia.
+@property {Date} fecha - Fecha de la noticia.
+@property {boolean} esPremium - Indica si la noticia es premium o no.
+@property {string} imagen - URL de la imagen asociada a la noticia.
+*/
 export interface INoticias {
   id: number;
   titulo: string;
@@ -7,6 +17,13 @@ export interface INoticias {
   imagen: string;
 }
 
+
+/**
+Función auxiliar que resta una cantidad determinada de milisegundos a la fecha actual
+@function simularTiempoTranscurrido
+@param {number} decrementMiliseconds - Milisegundos a restar.
+@returns {Date} - Nueva fecha.
+*/
 const simularTiempoTranscurrido: (decrementMiliseconds: number) => Date = (
   decrementMiliseconds
 ) => {
@@ -15,6 +32,7 @@ const simularTiempoTranscurrido: (decrementMiliseconds: number) => Date = (
   return time;
 };
 
+// Datos simulados de noticias
 const data = [
   {
     id: 1,

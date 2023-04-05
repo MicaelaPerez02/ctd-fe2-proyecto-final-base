@@ -4,16 +4,34 @@ import { ESTADO_FETCH } from "./constants";
 import { obtenerCita } from "./citaAPI";
 import { ICita } from "./types";
 
+/**
+Representa el estado de la cita.
+@typedef {Object} EstadoCita
+@property {ICita|null} data - La cita obtenida de la API.
+@property {ESTADO_FETCH} estado - El estado del fetch de la cita.
+*/
 export interface EstadoCita {
   data: ICita | null;
   estado: ESTADO_FETCH;
 }
 
+/** 
+El estado inicial de la cita.
+@type {EstadoCita}
+*/
 const initialState: EstadoCita = {
   data: null,
   estado: ESTADO_FETCH.INACTIVO,
 };
 
+/**
+Acción async para obtener la cita desde una API y actualizar el estado.
+@function
+@name obtenerCitaAsync
+@memberof module:citaSlice
+@param {string} personaje - El personaje para obtener la cita. Si no se provee, se obtiene una cita aleatoria.
+@returns {Promise<ICita>} - La cita obtenida.
+*/
 export const obtenerCitaAsync = createAsyncThunk(
   "cita/obtenerCita",
   async (personaje: string) => {
@@ -27,6 +45,16 @@ export const obtenerCitaAsync = createAsyncThunk(
   }
 );
 
+/**
+Slice de Redux para el estado de la cita.
+@type {Slice}
+@name citaSlice
+@namespace
+@memberof module:citaSlice
+@prop {EstadoCita} initialState - El estado inicial del slice.
+@prop {Object} reducers - Reducers síncronos para el slice.
+@prop {Function} extraReducers - Manejadores de acciones asincrónicas para el slice.
+*/
 export const citaSlice = createSlice({
   name: "citas",
   initialState,
@@ -57,6 +85,7 @@ export const obtenerCitaDeLaAPI =
     dispatch(obtenerCitaAsync(personaje));
   };
 
+  
 export const obtenerCitaDelEstado = (state: RootState) => state.cita.data;
 export const obtenerEstadoDelPedido = (state: RootState) => state.cita.estado;
 

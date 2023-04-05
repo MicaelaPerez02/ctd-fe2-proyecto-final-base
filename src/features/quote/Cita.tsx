@@ -10,6 +10,12 @@ import {
 } from "./citaSlice";
 import { obtenerMensaje } from "./utils";
 
+/**
+Componente Cita
+Este componente se encarga de mostrar una cita de Rick y Morty obtenida desde una API, ya sea
+aleatoria o buscando por autor. También permite borrar la cita actual y buscar nuevas citas.
+@returns {JSX.Element} Elemento JSX que representa el componente.
+*/
 function Cita() {
   const [valorInput, setValorInput] = useState("");
   const { cita = "", personaje = "" } =
@@ -18,8 +24,16 @@ function Cita() {
 
   const dispatch = useAppDispatch();
 
+  /**
+  Función que se encarga de buscar una cita por autor.
+  @function onClickObtenerCita
+  */
   const onClickObtenerCita = () => dispatch(obtenerCitaDeLaAPI(valorInput));
 
+  /**
+  Función que se encarga de borrar la cita actual.
+  @function onClickBorrar
+  */
   const onClickBorrar = () => {
     dispatch(limpiar());
     setValorInput("");

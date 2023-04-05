@@ -4,10 +4,20 @@ import * as Styled from "./styled";
 import Noticia, { INoticiasNormalizadas } from "./Noticia";
 import INoticiasProvider from "./NoticiasProvider";
 
+/**
+ * Componente que muestra una lista de noticias y permite ver más detalles de cada una en un modal.
+ * @param {Object} props - Propiedades del componente.
+ * @param {INoticiasProvider} props.noticiasProvider - Proveedor de noticias.
+ */
+
 const Noticias = ({ noticiasProvider }: { noticiasProvider: INoticiasProvider }) => {
   const [noticias, setNoticias] = useState<INoticiasNormalizadas[]>([]);
   const [modal, setModal] = useState<INoticiasNormalizadas | null>(null);
 
+  /**
+  * Función que obtiene la información de las noticias.
+  * @function
+  */
   const obtenerInformacionNoticias = useCallback(async () => {
     const noticiasApi = await noticiasProvider.obtenerNoticias();
     const noticiasNormalizadas = noticiasApi.map((noticia) => Noticia(noticia));
@@ -21,6 +31,10 @@ const Noticias = ({ noticiasProvider }: { noticiasProvider: INoticiasProvider })
     actualizarNoticias();
   }, [obtenerInformacionNoticias]);
 
+  /**
+ * Función que maneja la suscripción al newsletter.
+ * @function
+ */
   const handleSubscribe = () => {
     setTimeout(() => {
       alert("Suscripto!");

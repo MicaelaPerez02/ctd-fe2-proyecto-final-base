@@ -1,3 +1,7 @@
+/**
+Enum que representa el estado de una petición de tipo fetch.
+@enum {number}
+*/
 export enum ESTADO_FETCH {
   INACTIVO,
   CARGANDO,

@@ -6,6 +6,7 @@ import {
   MargeImage,
 } from "../../assets";
 
+// Enumeración que contiene los nombres de los personajes de los Simpsons
 export enum NombresSimpsons {
   BART = "BART",
   LISA = "LISA",
@@ -14,6 +15,7 @@ export enum NombresSimpsons {
   HOMER = "HOMERO",
 }
 
+// Objeto que contiene la información de cada personaje de los Simpsons, referenciado por su nombre
 export const INFO_SIMPSONS = {
   [NombresSimpsons.BART]: {
     id: NombresSimpsons.BART,
