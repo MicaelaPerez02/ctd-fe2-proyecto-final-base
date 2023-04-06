@@ -19,6 +19,7 @@ function App() {
           alt="The-Simpsons"
           className="logo"
         />
+        
         <Cita />
       </header>
       <section className="App-bio">

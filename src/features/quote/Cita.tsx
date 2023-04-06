@@ -10,6 +10,11 @@ import {
 } from "./citaSlice";
 import { obtenerMensaje } from "./utils";
 
+export type CitaType = {
+  cita: string;
+  personaje: string;
+}
+
 /**
 Componente Cita
 Este componente se encarga de mostrar una cita de Rick y Morty obtenida desde una API, ya sea
