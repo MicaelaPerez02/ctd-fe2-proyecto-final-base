@@ -5,23 +5,24 @@ Este repositorio contiene el código que desarrollé para el examen final de Fro
 Los requisitos y condiciones de aprobación que debí cumplir para aprobar el examen son los siguientes:
 
 ## Requisitos
-Realizar un fork del proyecto provisto y trabajar de forma individual.
-Cumplir con todas las funcionalidades obligatorias.
-Desarrollar el proyecto utilizando TypeScript como lenguaje.
-Utilizar las librerías permitidas en la consigna y/o el archivo README que se encuentra dentro del repositorio.
-Desarrollar tests unitarios para la primera sección utilizando Jest y React Testing Library, y utilizando MSW para interceptar los request y mockear una respuesta.
-Utilizar la librería Styled Components para dar estilos a componentes y manejar estilos dinámicos.
-Aplicar al menos 1 principio SOLID para resolver la primera consigna, explicando en un comentario en qué parte del código se puede ver dicha aplicación.
-Condiciones de aprobación
-El proyecto deberá realizarse sobre la base del template entregado. No se aceptarán proyectos que se hayan realizado sin respetar dicho requerimiento.
-Cualquier funcionalidad que sea implementada utilizando una librería distinta a las permitidas, no se considerará realizada.
-Se espera que el proyecto cuente con un coverage de al menos 50% como condición mínima de aprobación.
-Los siguientes aspectos son extras al requisito mínimo de aprobación que serán tenidos en cuenta para aumentar la nota final, siempre y cuando su implementación sea correcta:
-TypeScript: se valorará el uso de TypeScript para el tipado de los componentes y funciones que desarrollen lógica reutilizable, y la reutilización de tipos comunes que se repiten a lo largo del código.
-Documentación: se valorará el correcto uso de la documentación en todas las funciones y componentes en caso de ser necesario.
-Validaciones: se valorará el agregado de validaciones de flujos alternativos al normal y el manejo de errores en las distintas funcionalidades implementadas.
-Testing unitario y coverage: se valorará el correcto uso del testing unitario y el incremento del porcentaje de cobertura de código (coverage) más allá del 50%.
-Buenas Prácticas: se prestará especial atención al uso de buenas prácticas, principios SOLID, reutilización de componentes y funcionalidades comunes, y renderizado dinámico.
+*Realizar un fork del proyecto provisto y trabajar de forma individual.
+*Cumplir con todas las funcionalidades obligatorias.
+*Desarrollar el proyecto utilizando TypeScript como lenguaje.
+*Utilizar las librerías permitidas en la consigna y/o el archivo README que se encuentra dentro del repositorio.
+*Desarrollar tests unitarios para la primera sección utilizando Jest y React Testing Library, y utilizando MSW para interceptar los request y mockear una respuesta.
+*Utilizar la librería Styled Components para dar estilos a componentes y manejar estilos dinámicos.
+*Aplicar al menos 1 principio SOLID para resolver la primera consigna, explicando en un comentario en qué parte del código se puede ver dicha aplicación.
+
+## Condiciones de aprobación
+*El proyecto deberá realizarse sobre la base del template entregado. No se aceptarán proyectos que se hayan realizado sin respetar dicho requerimiento.
+*Cualquier funcionalidad que sea implementada utilizando una librería distinta a las permitidas, no se considerará realizada.
+*Se espera que el proyecto cuente con un coverage de al menos 50% como condición mínima de aprobación.
+*Los siguientes aspectos son extras al requisito mínimo de aprobación que serán tenidos en cuenta para aumentar la nota final, siempre y cuando su implementación sea correcta:
+*TypeScript: se valorará el uso de TypeScript para el tipado de los componentes y funciones que desarrollen lógica reutilizable, y la reutilización de tipos comunes que se repiten a lo largo del código.
+*Documentación: se valorará el correcto uso de la documentación en todas las funciones y componentes en caso de ser necesario.
+*Validaciones: se valorará el agregado de validaciones de flujos alternativos al normal y el manejo de errores en las distintas funcionalidades implementadas.
+*Testing unitario y coverage: se valorará el correcto uso del testing unitario y el incremento del porcentaje de cobertura de código (coverage) más allá del 50%.
+*Buenas Prácticas: se prestará especial atención al uso de buenas prácticas, principios SOLID, reutilización de componentes y funcionalidades comunes, y renderizado dinámico.
 
 ## Funcionalidades Obligatorias
 
